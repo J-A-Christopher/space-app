@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:space/common/components/beauty.dart';
 import 'package:space/common/components/conn.dart';
 import 'package:space/common/components/default_screen.dart';
+import 'package:space/common/components/food_screen.dart';
 import 'package:space/common/components/forgot_password.dart';
 import 'package:space/common/components/profile.dart';
 import 'package:space/common/components/signIn.dart';
@@ -33,7 +34,6 @@ final goRouter = GoRouter(
         path: '/signUp',
         builder: (context, state) => const SignUpWidget(),
       ),
-      
       StatefulShellRoute.indexedStack(
           branches: [
             StatefulShellBranch(routes: [
@@ -41,8 +41,10 @@ final goRouter = GoRouter(
                   path: '/default-screen',
                   pageBuilder: (context, state) =>
                       const NoTransitionPage(child: DefaultScreen()),
-                  routes: const [
-                    // GoRoute(path: 'details',builder: (context, state)=>DetailsScreen())
+                  routes: [
+                    GoRoute(
+                        path: 'food',
+                        builder: (context, state) => const FoodScreen())
                   ])
             ], navigatorKey: _homeNavigatorKey),
             StatefulShellBranch(routes: [
