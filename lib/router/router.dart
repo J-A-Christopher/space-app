@@ -8,6 +8,7 @@ import 'package:space/common/components/forgot_password.dart';
 import 'package:space/common/components/profile.dart';
 import 'package:space/common/components/signIn.dart';
 import 'package:space/common/components/signup.dart';
+import 'package:space/common/components/tile_detail.dart';
 import 'package:space/common/components/token.dart';
 import 'package:space/router/bottom_nav.dart';
 
@@ -44,7 +45,12 @@ final goRouter = GoRouter(
                   routes: [
                     GoRoute(
                         path: 'food',
-                        builder: (context, state) => const FoodScreen())
+                        builder: (context, state) => const FoodScreen(),
+                        routes: [
+                          GoRoute(
+                              path: 'tile-detail',
+                              builder: (context, state) => const TileDetail())
+                        ])
                   ])
             ], navigatorKey: _homeNavigatorKey),
             StatefulShellBranch(routes: [
