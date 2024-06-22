@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:space/common/components/alert_dialog.dart';
 import 'package:space/common/components/carousel.dart';
 import 'package:space/common/components/elevated_button.dart';
 
-class TileDetail extends StatefulWidget {
-  const TileDetail({super.key});
+class MySpace extends StatelessWidget {
+  const MySpace({super.key});
 
-  @override
-  State<TileDetail> createState() => _TileDetailState();
-}
-
-class _TileDetailState extends State<TileDetail> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -93,18 +87,11 @@ class _TileDetailState extends State<TileDetail> {
                 SizedBox(
                     width: size.width * 0.3,
                     child: ElevatedButtonComponent(
-                        buttonTitle: 'Order now', execute: () {})),
+                        buttonTitle: 'STOCKS',
+                        execute: () {
+                          context.push('/profile-screen/my-space/stocks');
+                        })),
               ],
-            ),
-            SizedBox(
-              height: size.height * .01,
-            ),
-            Text(
-              'Order List',
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyLarge
-                  ?.copyWith(fontWeight: FontWeight.bold),
             ),
             SizedBox(
               height: size.height * .01,
@@ -117,8 +104,9 @@ class _TileDetailState extends State<TileDetail> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SizedBox(
-                  height: size.height * 0.13,
+                  height: size.height * 0.33,
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Flexible(
                         flex: 1,
@@ -126,7 +114,7 @@ class _TileDetailState extends State<TileDetail> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Products',
+                              'No',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyLarge
@@ -135,25 +123,20 @@ class _TileDetailState extends State<TileDetail> {
                                           Theme.of(context).colorScheme.primary,
                                       fontWeight: FontWeight.bold),
                             ),
-                            const Text('Capuccino'),
-                            const Text('Croissant'),
-                            const Text('Mocha'),
-                            const Text('Spice Lattie')
                           ],
                         ),
                       ),
                       const VerticalDivider(
-                        thickness: 1,
+                        thickness: 2,
                         color: Colors.amber,
                       ),
                       Flexible(
-                          flex: 2,
+                          flex: 1,
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Quantity',
+                                'Order No',
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyLarge
@@ -163,24 +146,8 @@ class _TileDetailState extends State<TileDetail> {
                                             .primary,
                                         fontWeight: FontWeight.bold),
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  TextButton(
-                                      onPressed: () {}, child: const Text('+')),
-                                  const Text('1'),
-                                  TextButton(
-                                      onPressed: () {}, child: const Text('-')),
-                                ],
-                              ),
-                              const Text('1'),
-                              const Text('1')
                             ],
                           )),
-                      const SizedBox(
-                        width: 30,
-                      ),
                       const VerticalDivider(
                         thickness: 1,
                         color: Colors.amber,
@@ -191,7 +158,7 @@ class _TileDetailState extends State<TileDetail> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Price',
+                              'Bill',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyLarge
@@ -200,10 +167,51 @@ class _TileDetailState extends State<TileDetail> {
                                           Theme.of(context).colorScheme.primary,
                                       fontWeight: FontWeight.bold),
                             ),
-                            const Text('250'),
-                            const Text('250'),
-                            const Text('250'),
-                            const Text('250')
+                          ],
+                        ),
+                      ),
+                      const VerticalDivider(
+                        thickness: 1,
+                        color: Colors.amber,
+                      ),
+                      Flexible(
+                        flex: 2,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Name',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge
+                                  ?.copyWith(
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const VerticalDivider(
+                        thickness: 1,
+                        color: Colors.amber,
+                      ),
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Status',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge
+                                  ?.copyWith(
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      fontWeight: FontWeight.bold),
+                            ),
                           ],
                         ),
                       ),
@@ -215,23 +223,6 @@ class _TileDetailState extends State<TileDetail> {
             SizedBox(
               height: size.height * .04,
             ),
-            Row(
-              children: [
-                const Chip(label: Text('Total:        1000')),
-                SizedBox(
-                  width: size.width * 0.3,
-                ),
-                ElevatedButtonComponent(
-                    buttonTitle: 'Order',
-                    execute: () {
-                      return showDialog(
-                          context: context,
-                          builder: (context) {
-                            return const AlertDialogPopper();
-                          });
-                    })
-              ],
-            )
           ],
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:space/common/components/sectionHeader.dart';
 
 class Profile extends StatelessWidget {
@@ -63,11 +64,19 @@ class Profile extends StatelessWidget {
           SizedBox(
             height: size.height * .025,
           ),
-          SectionHeader(sectionHeader: 'Post space', handler: () {}),
+          SectionHeader(
+              sectionHeader: 'Post space',
+              handler: () {
+                context.push('/profile-screen/post-space');
+              }),
           SizedBox(
             height: size.height * .025,
           ),
-          SectionHeader(sectionHeader: 'My space', handler: () {}),
+          SectionHeader(
+              sectionHeader: 'My space',
+              handler: () {
+                context.push('/profile-screen/my-space');
+              }),
           SizedBox(
             height: size.height * .025,
           ),
@@ -95,7 +104,11 @@ class Profile extends StatelessWidget {
           SizedBox(
             height: size.height * .025,
           ),
-          SectionHeader(sectionHeader: 'Settings', handler: () {})
+          SectionHeader(sectionHeader: 'Settings', handler: () {}),
+          SizedBox(
+            height: size.height * .025,
+          ),
+          SectionHeader(sectionHeader: 'Logout', handler: () {})
         ],
       ),
     ));

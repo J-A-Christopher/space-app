@@ -5,9 +5,12 @@ import 'package:space/common/components/conn.dart';
 import 'package:space/common/components/default_screen.dart';
 import 'package:space/common/components/food_screen.dart';
 import 'package:space/common/components/forgot_password.dart';
+import 'package:space/common/components/my_space.dart';
+import 'package:space/common/components/post_space.dart';
 import 'package:space/common/components/profile.dart';
 import 'package:space/common/components/signIn.dart';
 import 'package:space/common/components/signup.dart';
+import 'package:space/common/components/stocks.dart';
 import 'package:space/common/components/tile_detail.dart';
 import 'package:space/common/components/token.dart';
 import 'package:space/router/bottom_nav.dart';
@@ -76,8 +79,21 @@ final goRouter = GoRouter(
                   path: '/profile-screen',
                   pageBuilder: (context, state) =>
                       const NoTransitionPage(child: Profile()),
-                  routes: const [
-                    // GoRoute(path: 'details',builder: (context, state)=>DetailsScreen())
+                  routes: [
+                    GoRoute(
+                      path: 'post-space',
+                      builder: (context, state) => const PostSpace(),
+                    ),
+                    GoRoute(
+                      path: 'my-space',
+                      builder: (context, state) => const MySpace(),
+                      routes: [
+                        GoRoute(
+                      path: 'stocks',
+                      builder: (context, state) => const Stocks(),
+                    ),
+                      ]
+                    ),
                   ])
             ], navigatorKey: _profileNavigatorKey),
             StatefulShellBranch(routes: [
