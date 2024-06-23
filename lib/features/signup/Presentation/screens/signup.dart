@@ -37,6 +37,9 @@ class _SignUpWidgetState extends State<SignUpWidget> {
               username: userName)
           .toJson();
       context.read<SignUpBloc>().add(OnSignUpUser(userSignUpData: userData));
+      passwordController.clear();
+      confirmPasswordController.clear();
+      _formKey.currentState!.reset();
     }
   }
 
@@ -240,7 +243,10 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         content: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('${state.userResponse.message}'),
+                        Text(
+                          '${state.userResponse.message}',
+                          style: const TextStyle(color: Colors.white),
+                        ),
                         const CircleAvatar(
                             child: Icon(
                           Icons.check,
@@ -252,7 +258,10 @@ class _SignUpWidgetState extends State<SignUpWidget> {
 
                   if (state is SignUpError) {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(state.errorMessage),
+                      content: Text(
+                        state.errorMessage,
+                        style: const TextStyle(color: Colors.white),
+                      ),
                       backgroundColor: Theme.of(context).colorScheme.error,
                     ));
                   }

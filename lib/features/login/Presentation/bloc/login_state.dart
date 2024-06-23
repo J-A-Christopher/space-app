@@ -11,7 +11,10 @@ final class LoginInitial extends LoginState {}
 
 final class LoginLoading extends LoginState {}
 
-final class LoginLoaded extends LoginState {}
+final class LoginLoaded extends LoginState {
+ const LoginLoaded({required this.loginUserData});
+  final LoginEntity loginUserData;
+}
 
 final class LoginInError extends LoginState {
   const LoginInError({required this.message});
