@@ -2,10 +2,13 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:space/di/di.dart';
+import 'package:space/features/login/Presentation/bloc/login_bloc.dart';
 import 'package:space/features/signup/Presentation/bloc/sign_up_bloc.dart';
 import 'package:space/router/router.dart';
 
 void main() {
+  configureDependencies();
   runApp(const MyApp());
 }
 
@@ -18,6 +21,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (_) => SignUpBloc(),
+        ),
+        BlocProvider(
+          create: (_) => LoginBloc(),
         ),
       ],
       child: MaterialApp.router(
