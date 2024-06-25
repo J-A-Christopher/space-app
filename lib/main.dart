@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:space/di/di.dart';
 import 'package:space/features/login/Presentation/bloc/login_bloc.dart';
 import 'package:space/features/signup/Presentation/bloc/sign_up_bloc.dart';
+import 'package:space/features/spaceupload/Presentation/bloc/post_space_bloc.dart';
 import 'package:space/router/router.dart';
 
 void main() {
@@ -25,6 +26,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (_) => LoginBloc(),
         ),
+        BlocProvider(
+          create: (_) => PostSpaceBloc(),
+        ),
+        
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
